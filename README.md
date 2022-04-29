@@ -4,7 +4,7 @@
 ![cuDNN 7.4.1](https://img.shields.io/badge/cudnn-7.4.1-green.svg?style=plastic)
 ![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=plastic)
 
-![Teaser image](./Workflow of field application of GANSim.png) 
+![Teaser image](./Workflow_of_field_application_of_GANSim.png) 
 **Picture:** *Workflow of field cave reservoir geomodelling using GANSim*
 
 This repository contains the official TensorFlow implementation of the following paper:
