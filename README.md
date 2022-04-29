@@ -99,7 +99,7 @@ See [Field_Application_of_Trained_Generator_for_64x64x64-size.ipynb](./Codes/Fie
 
 ### 4.2 Field reservoir with 96x256x336 cells (a large arbitrary-size reservoir)
 
-The field obtained 3D well facies and probability map (interpreted from field seismic data) cubes are availabe at [Field measured 3D well facies and probability maps](./PracticalDataFromTahe/96x256x336/).
+The field obtained 3D well facies and probability map (interpreted from field seismic data) cubes are availabe at [Field measured 3D well facies and probability maps](./PracticalDataFromTahe/96x256x336/) with the format of `rar`. Please unpack the `.rar` file first before using the data in next step.
 
 See [Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py](./Codes/Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py/) for detailed steps about how to produce facies model realizations by taking the given conditioning data into the trained generator. Note producing such large-size reservoir realizations require lots of GPU memory. The paths to conditioning data, codes, and produced realizations should be revised. Run this `.py` file to produce realizations.
 
