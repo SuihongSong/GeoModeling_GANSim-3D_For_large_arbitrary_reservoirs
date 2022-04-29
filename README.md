@@ -14,7 +14,7 @@ This repository contains the official TensorFlow implementation of the following
 > CUPB: China University of Petroleum - Beijing
 
 > Available at my ResearchGate personal profile (https://www.researchgate.net/profile/Suihong-Song)
->
+
 > **Abstract:** We present a Generative Adversarial Networks (GANs)-based 3D reservoir simulation framework, GANSim-3D, where the generator is progressively trained to capture geological patterns and relationships between various input conditioning data and output earth models and is thus able to directly produce multiple 3D realistic and conditional earth models from given conditioning data. Conditioning data can include 3D sparse well facies data, probability maps, and global features like facies proportion. The generator only includes 3D convolutional layers, and once trained on a dataset consisting of small-size data cubes, it can be used for geomodelling of 3D reservoirs of large arbitrary sizes by simply extending the inputs. To illustrate how GANSim-3D is practically used and to verify GANSim-3D, a field karst cave reservoir in Tahe area of China is used as an example. The 3D well facies data and 3D probability map of caves obtained from geophysical interpretation are taken as conditioning data. First, we create training, validation, and test datasets consisting of 64×64×64-size 3D cave facies models integrating field geological patterns, 3D well facies data, and 3D probability maps. Then, the 3D generator is trained and evaluated with various metrics. Next, we apply the pretrained generator for conditional geomodelling of two field cave reservoirs of size 64×64×64 and 336×256×96. The produced reservoir realizations prove to be diverse, consistent with the field geological patterns and the field conditioning data, and robust to noise in the 3D probability maps. Each realization with 336×256×96 cells only takes 0.988 seconds using 1 GPU. 
 
 This study is based on our previous studies presented in my github profile(
@@ -61,7 +61,7 @@ Training facies models are stored as multi-resolution TFRecords. Each original f
 
 Once the training dataset are prepared, GANs can be trained following steps:
 
-(1) Edit [config.py](./Codes/config.py) to set path `data_dir` (this path points to the folder containing `TrainingData` and `TestData` folders produced in previous step) containing the training data and path for expected results `result_dir`, gpu number `num_gpus`, batch size `sched.minibatch_dict`, learning rate, and names, et.
+(1) Edit [config.py](./Codes/config.py) to set path `data_dir` (this path points to the folder containing `TrainingData` and `TestData` folders produced in previous step) containing the training data and path for expected results `result_dir`, gpu number `num_gpus`, batch size `sched.minibatch_dict`, learning rate, and names, etc.
 
 If using conventional GAN training process (non-progressive training), uncomment the line of code: 
 ```
@@ -84,7 +84,7 @@ dataset.well_enlarge = True; desc += '-Enlarg';  # uncomment this line to let th
 
 ## 3. Assessment of the trained generator
 
-The pre-trained generators are evaluated using Test dataset (constructed in step 1) in [Evaluations_of_Trained_Generator.ipynb](./Codes/Evaluations_of_Trained_Generator.ipynb). Detailed steps are illustrated inside these `*.ipynb` files. 
+The pre-trained generators are evaluated using Test dataset (constructed in step 1) in [Evaluations_of_Trained_Generator.ipynb](./Codes/Evaluations_of_Trained_Generator.ipynb). 
 
 
 ## 4. Field reservoir geomodelling using the trained generator
@@ -101,5 +101,5 @@ See [Field_Application_of_Trained_Generator_for_64x64x64-size.ipynb](./Codes/Fie
 
 The field obtained 3D well facies and probability map (interpreted from field seismic data) cubes are availabe at [Field measured 3D well facies and probability maps](./PracticalDataFromTahe/96x256x336/).
 
-See [Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py](./Codes/Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py/) for detailed steps about how to produce facies model realizations by taking the given conditioning data into the trained generator. Note producing such large-size reservoir realizations require lots of GPU memory. The paths to conditioning data, codes, and produced realizations should be revised.
+See [Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py](./Codes/Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py/) for detailed steps about how to produce facies model realizations by taking the given conditioning data into the trained generator. Note producing such large-size reservoir realizations require lots of GPU memory. The paths to conditioning data, codes, and produced realizations should be revised. Run this `.py` file to produce realizations.
 
