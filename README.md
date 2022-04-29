@@ -46,7 +46,7 @@ All material, including our training dataset, is made available under MIT licens
 * NVIDIA driver 391.35 or newer, CUDA toolkit 9.0 or newer, cuDNN 7.4.1 or newer.
 
 
-## 1. Preparing training dataset
+## 1. Preparing training/test dataset
 
 The training dataset includes 3D synthesized cave facies models, sparse 3D well facies data, and 3D probability maps. Corresponding global features data are also provided in this project although not used as the input of the generator. 
 
@@ -59,41 +59,36 @@ Training facies models are stored as multi-resolution TFRecords. Each original f
 
 ## 2. Training networks
 
-Once the training dataset and related codes are downloaded, you can train your own facies model generators as follows:
+Once the training dataset are prepared, GANs can be trained following steps:
 
-1. Edit [config.py](./Code/0_only_conditioning_to_global_features/config.py) or [config.py](./Code/1_conditioning_to_well_facies_alone_or_with_global_features/config.py) to set path `data_dir` (this path points to the folder containing `TrainingData` and `TestData` folders) for the downloaded training data and path for expected results `result_dir`, gpu number. Global feature types are set with following code:
-```
-labeltypes = [1]  # can include: 0 for 'channelorientation', 1 for 'mudproportion', 2 for 'channelwidth', 3 for 'channelsinuosity'; but the loss for channel orientation has not been designed in loss.py.
-# [] for no label conditioning.
-```
+(1) Edit [config.py](./Codes/config.py) to set path `data_dir` (this path points to the folder containing `TrainingData` and `TestData` folders produced in previous step) containing the training data and path for expected results `result_dir`, gpu number `num_gpus`, batch size `sched.minibatch_dict`, learning rate, and names, et.
+
 If using conventional GAN training process (non-progressive training), uncomment the line of code: 
 ```
-#desc += '-nogrowing'; sched.lod_initial_resolution = 64; train.total_kimg = 10000
+#desc += '-nogrowing'; sched.lod_initial_resolution = 64; sched.lod_training_kimg = 0; sched.lod_transition_kimg = 0; train.total_kimg = 10000
 ```
+
 Set if the input well facies data is enlarged (each well facies data occupies 4x4 pixels) or unenlarged (each well facies data only occupies 1x1 pixel), by uncommenting or commenting following line of code:
 ```
 dataset.well_enlarge = True; desc += '-Enlarg';  # uncomment this line to let the dataset output enlarged well facies data; comment to make it unenlarged.
 ```
 
-2. Edit [train.py](./Code/0_only_conditioning_to_global_features/train.py) or [train.py](./Code/1_conditioning_to_well_facies_alone_or_with_global_features/train.py) to set detailed parameters of training, such as parameters in `class TrainingSchedule` and `def train_progressive_gan`.
+(2) Edit [loss.py](./Codes/loss.py) to revise the weights for GANs loss `orig_weight`, well facies-condition loss `Wellfaciesloss_weight`, probability map-condition loss `Probcubeloss_weight`, various global features (labels)-condition loss, batch multiplier used to calculate frequency map (approximating probability map) when training `batch_multiplier`, etc.
 
-3. Set default path as the directory path of downloaded code files, and run the training script with `python train.py`. Or, edit path in [RunCode.py](./Code/0_only_conditioning_to_global_features/RunCode.ipynb) or [RunCode.py](./Code/1_conditioning_to_well_facies_alone_or_with_global_features/RunCode.ipynb), and run `% run train.py` in `RunCode.py` files with Jupyter notebook.
+(3) Edit [train.py](./Codes/train.py) to set detailed parameters of training, such as parameters in `class TrainingSchedule` and `def train_progressive_gan`.
 
-## Assessment of the trained generator
+(4) Run [train.py](./Codes/train.py) with python.
 
-Each of the four pre-trained generators are evaluated using Test dataset (Zenodo, https://zenodo.org/record/3993791#.X1FQuMhKhaR) in `Analyses_of_Trained_Generator-xxxx.ipynb ` files:
 
-(1) for generator only conditioned to global features [Analyses_of_Trained_Generator.ipynb](./Code/0_only_conditioning_to_global_features/Analyses_of_Trained_Generator.ipynb); 
+## 3. Assessment of the trained generator
 
-(2) for generator only conditioned to well facies data [Analyses_of_Trained_Generator-WellCond-AfterEnlarg.ipynb](./Code/1_conditioning_to_well_facies_alone_or_with_global_features/Analyses_of_Trained_Generator-WellCond-AfterEnlarg.ipynb); 
+The pre-trained generators are evaluated using Test dataset (constructed in step 1) in [Evaluations_of_Trained_Generator.ipynb](./Codes/Evaluations_of_Trained_Generator.ipynb). Detailed steps are illustrated inside these `*.ipynb` files. 
 
-(3) for generator conditioned to channel sinuosity and well facies data [Analyses_of_Trained_Generator-Sinuosity-WellEnlarg.ipynb](./Code/1_conditioning_to_well_facies_alone_or_with_global_features/Analyses_of_Trained_Generator-Sinuosity-WellEnlarg.ipynb);
 
-(4) for generator conditioned to mud proportion and well facies data [Analyses_of_Trained_Generator-MudProp-WellEnlarg.ipynb](./Code/1_conditioning_to_well_facies_alone_or_with_global_features/Analyses_of_Trained_Generator-MudProp-WellEnlarg.ipynb).
+## 3. Assessment of the trained generator
 
-Detailed steps are illustrated inside these `*.ipynb` files. How to run them is also explained in previous section ` Using pre-trained networks `.
+The pre-trained generators are evaluated using Test dataset (constructed in step 1) in [Evaluations_of_Trained_Generator.ipynb](./Codes/Evaluations_of_Trained_Generator.ipynb). Detailed steps are illustrated inside these `*.ipynb` files. 
 
-Please note that the exact results may vary from run to run due to the non-deterministic nature of TensorFlow.
 
 ## Acknowledgements
 
