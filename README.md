@@ -79,6 +79,8 @@ dataset.well_enlarge = True; desc += '-Enlarg';  # uncomment this line to let th
 
 (4) Run [train.py](./Codes/train.py) with python.
 
+#### The generator we have trained is also available here for direct application, see [network-snapshot-003360.pkl](./TrainedGenerator/)
+
 
 ## 3. Assessment of the trained generator
 
@@ -87,12 +89,17 @@ The pre-trained generators are evaluated using Test dataset (constructed in step
 
 ## 4. Field reservoir geomodelling using the trained generator
 
+The trained generator is finally used for geomodelling of two field reservoirs with size of 64x64x64 and 96x256x336, where each cell is the same.
 
 ### 4.1 Field reservoir with 64x64x64 cells
-The pre-trained generators are evaluated using Test dataset (constructed in step 1) in [Evaluations_of_Trained_Generator.ipynb](./Codes/Evaluations_of_Trained_Generator.ipynb). Detailed steps are illustrated inside these `*.ipynb` files. 
 
+The field obtained 3D well facies and probability map (interpreted from field seismic data) cubes are availabe at [Field measured 3D well facies and probability maps](./PracticalDataFromTahe/64x64x64/).
 
-## Acknowledgements
+See [Field_Application_of_Trained_Generator_for_64x64x64-size.ipynb](./Codes/Field_Application_of_Trained_Generator_for_64x64x64-size.ipynb/) for detailed steps about how to produce facies model realizations by taking the given conditioning data into the trained generator. Note to revise the paths to conditioning data, codes, and produced realizations in the file.
 
-Code for this project is improved from the original code of Progressive GANs (https://github.com/tkarras/progressive_growing_of_gans). We thank the authors for their great job.
+### 4.2 Field reservoir with 96x256x336 cells (a large arbitrary-size reservoir)
+
+The field obtained 3D well facies and probability map (interpreted from field seismic data) cubes are availabe at [Field measured 3D well facies and probability maps](./PracticalDataFromTahe/96x256x336/).
+
+See [Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py](./Codes/Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py/) for detailed steps about how to produce facies model realizations by taking the given conditioning data into the trained generator. Note producing such large-size reservoir realizations require lots of GPU memory. The paths to conditioning data, codes, and produced realizations should be revised.
 
