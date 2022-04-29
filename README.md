@@ -85,8 +85,10 @@ dataset.well_enlarge = True; desc += '-Enlarg';  # uncomment this line to let th
 The pre-trained generators are evaluated using Test dataset (constructed in step 1) in [Evaluations_of_Trained_Generator.ipynb](./Codes/Evaluations_of_Trained_Generator.ipynb). Detailed steps are illustrated inside these `*.ipynb` files. 
 
 
-## 3. Assessment of the trained generator
+## 4. Field reservoir geomodelling using the trained generator
 
+
+### 4.1 Field reservoir with 64x64x64 cells
 The pre-trained generators are evaluated using Test dataset (constructed in step 1) in [Evaluations_of_Trained_Generator.ipynb](./Codes/Evaluations_of_Trained_Generator.ipynb). Detailed steps are illustrated inside these `*.ipynb` files. 
 
 
