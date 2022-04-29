@@ -1,0 +1,106 @@
+Initializing TensorFlow...
+Running train.train_progressive_gan()...
+Streaming data using dataset.TFRecordDataset...
+Dataset shape = [1, 64, 64, 64]
+Dynamic range = [0, 255]
+Label size    = 0
+Loading networks from "/scratch/users/suihong/CaveSimulation/GANTrainingResults/109-pgan3D-4gpu-V100-OnlyCV-LC_8-GANw_2-NoLabelCond-CondWell_0.7-Enlarg-CondProb_1/network-snapshot-002080.pkl"...
+
+G                           Params      OutputShape             WeightShape             
+---                         ---         ---                     ---                     
+latents_in                  -           (?, 8, 4, 4, 4)         -                       
+labels_in                   -           (?, 0, 4, 4, 4)         -                       
+wellfacies_in               -           (?, 2, 64, 64, 64)      -                       
+probcubes_in                -           (?, 1, 64, 64, 64)      -                       
+lod                         -           ()                      -                       
+4x4/Conv                    27776       (128,)                  (3, 3, 3, 8, 128)       
+4x4/Add_Prob                32          (16,)                   (1, 1, 1, 1, 16)        
+4x4/Add_Wellfc              48          (16,)                   (1, 1, 1, 2, 16)        
+ToRGB_lod4                  161         (1,)                    (1, 1, 1, 160, 1)       
+8x8/Upscale3d               -           (?, 160, 8, 8, 8)       -                       
+8x8/Add_Prob                32          (16,)                   (1, 1, 1, 1, 16)        
+8x8/Add_Wellfc              48          (16,)                   (1, 1, 1, 2, 16)        
+8x8/Conv0                   663680      (128,)                  (3, 3, 3, 192, 128)     
+ToRGB_lod3                  129         (1,)                    (1, 1, 1, 128, 1)       
+Upscale3d                   -           (?, 1, 8, 8, 8)         -                       
+Grow_lod3                   -           (?, 1, 8, 8, 8)         -                       
+16x16/Upscale3d             -           (?, 128, 16, 16, 16)    -                       
+16x16/Add_Prob              32          (16,)                   (1, 1, 1, 1, 16)        
+16x16/Add_Wellfc            48          (16,)                   (1, 1, 1, 2, 16)        
+16x16/Conv0                 553088      (128,)                  (3, 3, 3, 160, 128)     
+ToRGB_lod2                  129         (1,)                    (1, 1, 1, 128, 1)       
+Upscale3d_1                 -           (?, 1, 16, 16, 16)      -                       
+Grow_lod2                   -           (?, 1, 16, 16, 16)      -                       
+32x32/Upscale3d             -           (?, 128, 32, 32, 32)    -                       
+32x32/Add_Prob              32          (16,)                   (1, 1, 1, 1, 16)        
+32x32/Add_Wellfc            48          (16,)                   (1, 1, 1, 2, 16)        
+32x32/Conv0                 553088      (128,)                  (3, 3, 3, 160, 128)     
+ToRGB_lod1                  129         (1,)                    (1, 1, 1, 128, 1)       
+Upscale3d_2                 -           (?, 1, 32, 32, 32)      -                       
+Grow_lod1                   -           (?, 1, 32, 32, 32)      -                       
+64x64/Upscale3d             -           (?, 128, 64, 64, 64)    -                       
+64x64/Add_Prob              32          (16,)                   (1, 1, 1, 1, 16)        
+64x64/Add_Wellfc            48          (16,)                   (1, 1, 1, 2, 16)        
+64x64/Conv0                 276544      (64,)                   (3, 3, 3, 160, 64)      
+ToRGB_lod0                  65          (1,)                    (1, 1, 1, 64, 1)        
+Upscale3d_3                 -           (?, 1, 64, 64, 64)      -                       
+Grow_lod0                   -           (?, 1, 64, 64, 64)      -                       
+cubes_out                   -           (?, 1, 64, 64, 64)      -                       
+---                         ---         ---                     ---                     
+Total                       2075189                                                     
+
+
+D                           Params      OutputShape             WeightShape             
+---                         ---         ---                     ---                     
+cubes_in                    -           (?, 1, 64, 64, 64)      -                       
+lod                         -           ()                      -                       
+FromRGB_lod0                128         (64,)                   (1, 1, 1, 1, 64)        
+64x64/Conv1_down            221312      (128,)                  (3, 3, 3, 64, 128)      
+Downscale3d                 -           (?, 1, 32, 32, 32)      -                       
+FromRGB_lod1                256         (128,)                  (1, 1, 1, 1, 128)       
+Grow_lod0                   -           (?, 128, 32, 32, 32)    -                       
+32x32/Conv1_down            442496      (128,)                  (3, 3, 3, 128, 128)     
+Downscale3d_1               -           (?, 1, 16, 16, 16)      -                       
+FromRGB_lod2                256         (128,)                  (1, 1, 1, 1, 128)       
+Grow_lod1                   -           (?, 128, 16, 16, 16)    -                       
+16x16/Conv1_down            442496      (128,)                  (3, 3, 3, 128, 128)     
+Downscale3d_2               -           (?, 1, 8, 8, 8)         -                       
+FromRGB_lod3                256         (128,)                  (1, 1, 1, 1, 128)       
+Grow_lod2                   -           (?, 128, 8, 8, 8)       -                       
+8x8/Conv1_down              442496      (128,)                  (3, 3, 3, 128, 128)     
+Downscale3d_3               -           (?, 1, 4, 4, 4)         -                       
+FromRGB_lod4                256         (128,)                  (1, 1, 1, 1, 128)       
+Grow_lod3                   -           (?, 128, 4, 4, 4)       -                       
+4x4/MinibatchStddev         -           (?, 1, 4, 4, 4)         -                       
+4x4/Conv                    445952      (128,)                  (3, 3, 3, 129, 128)     
+4x4/Dense0                  196632      (24,)                   (8192, 24)              
+4x4/Dense1                  25          (1,)                    (24, 1)                 
+scores_out                  -           (?, 1)                  -                       
+labels_out                  -           (?, 0)                  -                       
+---                         ---         ---                     ---                     
+Total                       2192561                                                     
+
+Building TensorFlow graph...
+Setting up snapshot image grid...
+Setting up result dir...
+Saving results to /scratch/users/suihong/CaveSimulation/GANTrainingResults/110-pgan3D-4gpu-V100-OnlyCV-LC_8-GANw_2-NoLabelCond-CondWell_0.7-Enlarg-CondProb_1
+Training...
+tick 1     kimg 2160.0   lod 0.83  minibatch 16   time 8h 39m 41s   sec/tick 7720.9  sec/kimg 96.51   maintenance 81.7
+tick 2     kimg 2240.0   lod 0.67  minibatch 16   time 10h 47m 15s  sec/tick 7632.2  sec/kimg 95.40   maintenance 22.0
+tick 3     kimg 2320.0   lod 0.50  minibatch 16   time 12h 54m 31s  sec/tick 7634.7  sec/kimg 95.43   maintenance 1.5
+tick 4     kimg 2400.0   lod 0.33  minibatch 16   time 15h 01m 48s  sec/tick 7635.0  sec/kimg 95.44   maintenance 1.4
+tick 5     kimg 2480.0   lod 0.17  minibatch 16   time 17h 09m 05s  sec/tick 7635.8  sec/kimg 95.45   maintenance 1.5
+tick 6     kimg 2560.0   lod 0.00  minibatch 16   time 19h 16m 23s  sec/tick 7636.1  sec/kimg 95.45   maintenance 1.6
+tick 7     kimg 2640.0   lod 0.00  minibatch 16   time 21h 20m 30s  sec/tick 7446.4  sec/kimg 93.08   maintenance 1.4
+tick 8     kimg 2720.0   lod 0.00  minibatch 16   time 23h 24m 40s  sec/tick 7447.9  sec/kimg 93.10   maintenance 1.4
+tick 9     kimg 2800.0   lod 0.00  minibatch 16   time 1d 01h 28m   sec/tick 7449.1  sec/kimg 93.11   maintenance 1.4
+tick 10    kimg 2880.0   lod 0.00  minibatch 16   time 1d 03h 33m   sec/tick 7449.3  sec/kimg 93.12   maintenance 1.5
+tick 11    kimg 2960.0   lod 0.00  minibatch 16   time 1d 05h 37m   sec/tick 7449.9  sec/kimg 93.12   maintenance 1.7
+tick 12    kimg 3040.0   lod 0.00  minibatch 16   time 1d 07h 41m   sec/tick 7449.7  sec/kimg 93.12   maintenance 1.4
+tick 13    kimg 3120.0   lod 0.00  minibatch 16   time 1d 09h 45m   sec/tick 7447.7  sec/kimg 93.10   maintenance 1.5
+tick 14    kimg 3200.0   lod 0.00  minibatch 16   time 1d 11h 49m   sec/tick 7450.1  sec/kimg 93.13   maintenance 1.4
+tick 15    kimg 3280.0   lod 0.00  minibatch 16   time 1d 13h 53m   sec/tick 7451.1  sec/kimg 93.14   maintenance 1.5
+tick 16    kimg 3360.0   lod 0.00  minibatch 16   time 1d 15h 58m   sec/tick 7451.6  sec/kimg 93.15   maintenance 1.5
+tick 17    kimg 3440.0   lod 0.00  minibatch 16   time 1d 18h 02m   sec/tick 7450.3  sec/kimg 93.13   maintenance 1.5
+tick 18    kimg 3520.0   lod 0.00  minibatch 16   time 1d 20h 06m   sec/tick 7450.3  sec/kimg 93.13   maintenance 1.5
+tick 19    kimg 3600.0   lod 0.00  minibatch 16   time 1d 22h 10m   sec/tick 7451.6  sec/kimg 93.15   maintenance 1.5
