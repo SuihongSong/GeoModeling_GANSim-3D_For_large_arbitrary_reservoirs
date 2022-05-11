@@ -103,3 +103,5 @@ The field obtained 3D well facies and probability map (interpreted from field se
 
 See [Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py](./Codes/Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py/) for detailed steps about how to produce facies model realizations by taking the given conditioning data into the trained generator. Note producing such large-size reservoir realizations require lots of GPU memory. The paths to conditioning data, codes, and produced realizations should be revised. Run this `.py` file to produce realizations.
 
+
+Please give appropriate credit to our work, if it is valuable for you to some extent.
