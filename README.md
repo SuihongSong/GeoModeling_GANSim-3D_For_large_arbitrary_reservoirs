@@ -2,7 +2,6 @@
 ![Python 3.6](https://img.shields.io/badge/python-3.6-green.svg?style=plastic)
 ![TensorFlow 1.12](https://img.shields.io/badge/tensorflow-1.12-green.svg?style=plastic)
 ![cuDNN 7.4.1](https://img.shields.io/badge/cudnn-7.4.1-green.svg?style=plastic)
-![License MIT](https://img.shields.io/badge/license-MIT-green.svg?style=plastic)
 
 ![Teaser image](./Workflow_of_field_application_of_GANSim.png) 
 **Picture:** *Workflow of field cave reservoir geomodelling using GANSim*
