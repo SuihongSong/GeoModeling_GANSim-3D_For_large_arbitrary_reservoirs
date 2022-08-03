@@ -103,5 +103,8 @@ The field obtained 3D well facies and probability map (interpreted from field se
 
 See [Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py](./Codes/Field_Application_of_Trained_Generator_for_Arbitary_Large_Size.py/) for detailed steps about how to produce facies model realizations by taking the given conditioning data into the trained generator. Note producing such large-size reservoir realizations require lots of GPU memory. The paths to conditioning data, codes, and produced realizations should be revised. Run this `.py` file to produce realizations.
 
+## License
+Most code files of this study are derived from the original Progressive GANs work (https://github.com/tkarras/progressive_growing_of_gans), but we have largely amended the original codes, especially networks.py, loss.py, dataset.py, and train.py. The original Progressive GANs codes are under license of Attribution-NonCommercial 4.0 International (https://creativecommons.org/licenses/by-nc/4.0/). Other materials produced by us (e.g., the trained generator models, synthesized cave maps, and the parts of codes we have added or adjusted) are under MIT license.
+
 
 Please give appropriate credit to our work, if it is valuable for you to some extent.
