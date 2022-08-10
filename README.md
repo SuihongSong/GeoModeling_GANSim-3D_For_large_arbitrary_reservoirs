@@ -31,10 +31,6 @@ Material related to our paper is available via the following links:
 - Dataset used to prepare training datase: [CaveHeightDistributionMaps](./CaveHeightDistributionMaps/)
 - Pre-trained GANs: [TrainedGenerator](./TrainedGenerator/) 
 
-## Licenses
-
-All material, including our training dataset, is made available under MIT license. You can **use, redistribute, and adapt** the material for **non-commercial purposes**, as long as you give appropriate credit by **citing our paper** and **indicating any changes** that you've made.
-
 ## System requirements
 
 * Both Linux and Windows are supported, but Linux is suggested.
