@@ -1,7 +1,4 @@
 ## GANSim-3D for conditional geomodelling: theory and field application
-![Python 3.6](https://img.shields.io/badge/python-3.6-green.svg?style=plastic)
-![TensorFlow 1.12](https://img.shields.io/badge/tensorflow-1.12-green.svg?style=plastic)
-![cuDNN 7.4.1](https://img.shields.io/badge/cudnn-7.4.1-green.svg?style=plastic)
 
 ![Teaser image](./Workflow_of_field_application_of_GANSim.png) 
 **Picture:** *Workflow of field cave reservoir geomodelling using GANSim*
@@ -36,6 +33,7 @@ Material related to our paper is available via the following links:
 * Both Linux and Windows are supported, but Linux is suggested.
 * 64-bit Python 3.6 installation. We recommend Anaconda3 with numpy 1.14.3 or newer.
 * TensorFlow 1.10.0 or newer with GPU support.
+* (NOTE: the codes can also be run with TensorFlow2.x environment after adjusting several lines of codes, see 'Codes adjustments for TensorFlow 2')
 * One or more high-end NVIDIA GPUs.
 * Codes are not compatible with A100 GPUs currently. 
 * NVIDIA driver 391.35 or newer, CUDA toolkit 9.0 or newer, cuDNN 7.4.1 or newer.
